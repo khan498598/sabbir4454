@@ -1,0 +1,73 @@
+/* Investor UX V113
+   KAIRI keeps the compact TradingView-style drawing rail and selected-object
+   quickbar, while the two large floating panels no longer cover the chart. */
+body.gp-kairi-v1-active #gp-pro-draw-toolbar,
+body.gp-kairi-v1-active #gp-pro-draw-properties {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+body.gp-kairi-v1-active #gp-pro-draw-quickbar [data-gp-quick-action="more"] {
+  display: none !important;
+}
+
+/* Keep the compact draw rail and selected drawing quickbar above KAIRI. */
+body.gp-kairi-v1-active .gp-draw-tv-rail {
+  z-index: 1305 !important;
+}
+
+body.gp-kairi-v1-active #gp-pro-draw-quickbar.is-open {
+  z-index: 1310 !important;
+}
+
+/* PRIME Walls investor readability: remove the soft blur/veil and render the
+   wall canvas at full opacity. The wall engine itself has stronger wall and
+   label alpha in bridge V20, so no expensive CSS filter is required. */
+html body.gp-prime-walls-active #gp-prime-walls-overlay .gp-prime-walls-scrim,
+html body.gp-prime-walls-chart-active #gp-prime-walls-overlay .gp-prime-walls-scrim {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(0,255,207,.045), transparent 28%),
+    radial-gradient(circle at 25% 80%, rgba(0,149,255,.025), transparent 34%),
+    linear-gradient(180deg, rgba(1,8,15,.10), rgba(1,8,15,.025)) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html body.gp-prime-walls-active #gp-prime-walls-overlay canvas,
+html body.gp-prime-walls-chart-active #gp-prime-walls-overlay canvas {
+  opacity: 1 !important;
+}
+
+html body.gp-prime-walls-active #gp-prime-walls-overlay .gp-prime-walls-head,
+html body.gp-prime-walls-chart-active #gp-prime-walls-overlay .gp-prime-walls-head,
+html body.gp-prime-walls-active #gp-prime-walls-overlay .gp-prime-walls-mode,
+html body.gp-prime-walls-chart-active #gp-prime-walls-overlay .gp-prime-walls-mode,
+html body.gp-prime-walls-active #gp-prime-walls-overlay .gp-prime-walls-v8-status,
+html body.gp-prime-walls-chart-active #gp-prime-walls-overlay .gp-prime-walls-v8-status {
+  background: rgba(2,10,22,.90) !important;
+  border-color: rgba(80,255,219,.28) !important;
+  color: rgba(235,255,252,.96) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+
+/* V115 — explicit compact-bar close always wins in KAIRI. */
+html body.gp-kairi-v1-active.gp-step44-quickbar-hidden #gp-pro-draw-quickbar,
+html body.gp-kairi-v1-active.gp-step44-quickbar-user-hidden #gp-pro-draw-quickbar,
+html body.gp-kairi-v1-active:not(.gp-step44-quickbar-allowed) #gp-pro-draw-quickbar,
+html body.gp-kairi-v1-active #gp-pro-draw-quickbar[aria-hidden="true"],
+html body.gp-kairi-v1-active #gp-pro-draw-quickbar[data-gp-quickbar-closed="1"] {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateX(-50%) translateY(12px) scale(.96) !important;
+  transition: none !important;
+}
+
+html body.gp-kairi-v1-active #chart-area:not(.gp-drawing-tool-active) .gp-pro-draw-svg,
+html body.gp-kairi-v1-active .chart-area:not(.gp-drawing-tool-active) .gp-pro-draw-svg {
+  pointer-events: none !important;
+}

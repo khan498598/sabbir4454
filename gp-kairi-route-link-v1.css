@@ -1,0 +1,29 @@
+/* KAIRI early-access advisory route link only; no signal or execution logic. */
+.gp-terminal-side nav .gp-kairi-route-link,
+.gp-mobile-quick-rail .gp-kairi-route-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #dcecff;
+  text-decoration: none;
+  font: inherit;
+  font-weight: 850;
+}
+.gp-terminal-side nav .gp-kairi-route-link--side {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid rgba(246, 199, 97, .32);
+  border-radius: 9px;
+  background: rgba(246, 199, 97, .08);
+}
+.gp-mobile-quick-rail .gp-kairi-route-link--mobile {
+  min-height: 38px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  background: rgba(246, 199, 97, .08);
+}
+.gp-kairi-route-link span { color: #f6c761; }
+.gp-kairi-route-link:focus-visible {
+  outline: 2px solid #f6c761;
+  outline-offset: 2px;
+}

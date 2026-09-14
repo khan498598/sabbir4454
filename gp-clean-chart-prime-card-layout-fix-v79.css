@@ -1,0 +1,66 @@
+/* V79 — Clean Chart sizing + Prime Indicator draggable-card stability.
+   Frontend layout only. Payment, admin, auth and access APIs are untouched. */
+
+/* Clean Chart must keep the same desktop chart workspace height as the normal
+   Chart tab. Older bundled rules reduced this row to 560/520px. */
+@media (min-width: 1501px) {
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active #app,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active #app,
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only #app,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only #app {
+    grid-template-rows: 48px 78px minmax(728px, calc(130dvh - 146px)) minmax(540px, 58dvh) !important;
+  }
+
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active .main,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active .main,
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only .main,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only .main,
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active .chart-container,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active .chart-container,
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only .chart-container,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only .chart-container {
+    min-height: max(728px, var(--gp-v79-clean-container-min, 0px)) !important;
+  }
+}
+
+@media (min-width: 1181px) and (max-width: 1500px) {
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active #app,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active #app,
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only #app,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only #app {
+    grid-template-rows: 48px 76px minmax(676px, calc(130dvh - 144px)) minmax(520px, 58dvh) !important;
+  }
+
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active .main,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active .main,
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only .main,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only .main,
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active .chart-container,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-active .chart-container,
+  html body.terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only .chart-container,
+  html body.gp-terminal-active.gp-dashboard-chart-mode.gp-clean-chart-visuals-only .chart-container {
+    min-height: max(676px, var(--gp-v79-clean-container-min, 0px)) !important;
+  }
+}
+
+@media (min-width: 1181px) {
+  html body.gp-clean-layout-stable-v79.gp-clean-chart-active #chart-area,
+  html body.gp-clean-layout-stable-v79.gp-clean-chart-visuals-only #chart-area {
+    min-height: max(420px, var(--gp-v79-clean-area-min, 0px)) !important;
+  }
+}
+
+/* V77 keeps the card away from the right price scale with right:108px!important.
+   When the native drag code sets left/top, that old important right value caused
+   left + right to be active together and stretched the card across the chart. */
+@media (min-width: 901px) {
+  body.prime-indicator-chart-mode-active #prime-chart-signal.prime-chart-signal--dragging,
+  body.prime-indicator-chart-mode-active #prime-chart-signal[style*="left:"] {
+    right: auto !important;
+    bottom: auto !important;
+    width: min(var(--gp-v79-prime-signal-width, 565px), calc(100% - 16px)) !important;
+    max-width: min(var(--gp-v79-prime-signal-width, 565px), calc(100% - 16px)) !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+}

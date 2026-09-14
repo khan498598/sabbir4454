@@ -1,0 +1,91 @@
+#gp-access-dialog .gp-ekqr-form {
+  display: grid;
+  gap: 10px;
+  width: min(100%, 440px);
+  margin: 0 auto;
+  text-align: left;
+}
+
+#gp-access-dialog .gp-ekqr-form > p,
+#gp-access-dialog .gp-ekqr-form .gp-checkout-price {
+  text-align: center;
+}
+
+#gp-access-dialog .gp-ekqr-form label {
+  margin-top: 4px;
+  color: #b9c9d9;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#gp-access-dialog .gp-ekqr-form input {
+  width: 100%;
+  min-height: 46px;
+  box-sizing: border-box;
+  border: 1px solid rgba(94, 234, 212, 0.28);
+  border-radius: 10px;
+  outline: none;
+  background: #07151f;
+  color: #eef8ff;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+#gp-access-dialog .gp-ekqr-form input:focus {
+  border-color: #26d9c7;
+  box-shadow: 0 0 0 3px rgba(38, 217, 199, 0.12);
+}
+
+#gp-access-dialog .gp-ekqr-submit {
+  width: 100%;
+  margin-top: 6px;
+}
+
+#gp-access-dialog .gp-ekqr-error {
+  margin: 0;
+  color: #ff7b8d;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+}
+
+#gp-access-dialog .gp-ekqr-submit:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+#gp-access-dialog .gp-payment-link {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 16px 0;
+  border-radius: 10px;
+  background: #18c9b4;
+  color: #02100f;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+#gp-access-dialog .gp-payment-meta {
+  overflow-wrap: anywhere;
+}
+
+/* Monthly-only public offer; historical membership cards keep their layout. */
+#gp-home-pricing-dialog .gp-home-pricing-grid {
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+@media (max-width: 560px) {
+  #gp-access-dialog .gp-access-modal {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+  }
+}

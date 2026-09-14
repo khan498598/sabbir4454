@@ -1,0 +1,134 @@
+.gp-kairi-alert-card {
+  margin-top: 16px;
+  padding: 18px;
+  border: 1px solid rgba(0, 235, 166, 0.32);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(0, 235, 166, 0.11), rgba(7, 18, 28, 0.9));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.gp-kairi-alert-card__head,
+.gp-kairi-alert-card__actions,
+.gp-kairi-alert-card__options {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gp-kairi-alert-card__head {
+  justify-content: space-between;
+}
+
+.gp-kairi-alert-card__eyebrow {
+  display: block;
+  color: #7f9cae;
+  font: 700 10px/1.2 'JetBrains Mono', monospace;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.gp-kairi-alert-card h3 {
+  margin: 4px 0 0;
+  color: #f4fbff;
+  font-size: 18px;
+}
+
+.gp-kairi-alert-card p {
+  margin: 10px 0 0;
+  color: #b8cbd6;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.gp-kairi-alert-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: #bdfde8;
+  border: 1px solid rgba(0, 235, 166, 0.28);
+  background: rgba(0, 235, 166, 0.08);
+  font: 700 10px/1 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.gp-kairi-alert-card__actions {
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.gp-kairi-alert-card button,
+.gp-kairi-alert-bell {
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid #2d5263;
+  border-radius: 9px;
+  background: #091820;
+  color: #d9edf6;
+  font: 700 11px/1 'JetBrains Mono', monospace;
+  cursor: pointer;
+}
+
+.gp-kairi-alert-card button:hover,
+.gp-kairi-alert-bell:hover,
+.gp-kairi-alert-card button.is-enabled {
+  border-color: #00eba6;
+  color: #03140e;
+  background: #00eba6;
+}
+
+.gp-kairi-alert-card button:disabled {
+  cursor: not-allowed;
+  opacity: .58;
+}
+
+.gp-kairi-alert-card__options {
+  color: #b8cbd6;
+  font-size: 12px;
+}
+
+.gp-kairi-alert-card__options input {
+  accent-color: #00eba6;
+}
+
+.gp-kairi-alert-bell {
+  position: relative;
+  min-width: 38px;
+  padding: 0 10px;
+}
+
+.gp-kairi-alert-bell.is-active::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #00eba6;
+  box-shadow: 0 0 0 3px rgba(0, 235, 166, 0.16);
+}
+
+.gp-kairi-alert-toast {
+  margin-top: 8px;
+  max-width: min(420px, calc(100vw - 32px));
+  padding: 13px 16px;
+  border: 1px solid #2f6370;
+  border-radius: 10px;
+  color: #f3fbff;
+  background: #07151c;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .34);
+  font: 700 12px/1.4 'JetBrains Mono', monospace;
+}
+
+.gp-kairi-alert-toast--buy { border-color: #00eba6; }
+.gp-kairi-alert-toast--sell { border-color: #ff5576; }
+
+@media (max-width: 640px) {
+  .gp-kairi-alert-card__head { align-items: flex-start; flex-direction: column; }
+  .gp-kairi-alert-card__actions { align-items: stretch; flex-direction: column; }
+  .gp-kairi-alert-card__actions button { width: 100%; }
+}

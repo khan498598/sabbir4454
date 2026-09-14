@@ -1,0 +1,172 @@
+/* V78 investor polish: only UI/runtime compatibility. Payment/admin/access are untouched. */
+
+/* Keep one fullscreen control: the chart-panel button. */
+#fullscreen-btn,
+[data-gp-hidden-duplicate="maximize"] {
+  display: none !important;
+}
+
+/* The lower analytics panel already contains CVD. */
+#timeframes-tools [data-tv-action="toggleCvd"],
+[data-gp-hidden-duplicate="cvd"] {
+  display: none !important;
+}
+
+#metric-cvd.gp-cvd-building-v78 {
+  color: #8ea1b8 !important;
+  font-size: 12px !important;
+  letter-spacing: .01em !important;
+  animation: gp-cvd-building-pulse-v78 1.35s ease-in-out infinite;
+}
+@keyframes gp-cvd-building-pulse-v78 {
+  0%, 100% { opacity: .58; }
+  50% { opacity: 1; }
+}
+
+/* Drawing Tools: grouped chooser plus user-selected favorite buttons only. */
+#timeframes-tools .gp-draw-more-wrap {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+}
+#timeframes-tools .gp-draw-top-favs {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+}
+#timeframes-tools .gp-draw-top-fav.gp-draw-tv-btn {
+  position: relative !important;
+  width: 31px !important;
+  min-width: 31px !important;
+  height: 30px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255,255,255,.09) !important;
+  background: rgba(255,255,255,.035) !important;
+  color: #dcecff !important;
+  padding: 6px !important;
+  box-shadow: none !important;
+}
+#timeframes-tools .gp-draw-top-fav.gp-draw-tv-btn:hover,
+#timeframes-tools .gp-draw-top-fav.gp-draw-tv-btn.is-active {
+  color: #05131e !important;
+  border-color: transparent !important;
+  background: linear-gradient(135deg,#17b9ff,#00efbf) !important;
+}
+#timeframes-tools .gp-draw-top-fav.gp-draw-tv-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+#timeframes-tools .gp-draw-top-fav.gp-draw-tv-btn::after {
+  top: calc(100% + 7px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(-2px) !important;
+}
+#timeframes-tools .gp-draw-more-btn {
+  height: 30px !important;
+  min-height: 30px !important;
+  padding: 0 9px !important;
+  font-size: 10px !important;
+  white-space: nowrap !important;
+}
+#timeframes-tools .gp-draw-more-panel {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* Watchlist remains open until its explicit close/toggle is used. Dock it left,
+   away from the right price scale and DOM. */
+body.gp-watchlist-pinned-open-v78 #watchlist-panel {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+#watchlist-panel {
+  left: 72px !important;
+  right: auto !important;
+  top: 108px !important;
+  width: min(320px, calc(100vw - 96px)) !important;
+  max-height: calc(100vh - 132px) !important;
+}
+#watchlist-panel .watchlist-panel__body {
+  max-height: min(58vh, 500px) !important;
+}
+@media (max-width: 980px) {
+  #watchlist-panel {
+    left: 12px !important;
+    right: 12px !important;
+    top: 90px !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+  #timeframes-tools .gp-draw-more-wrap {
+    display: none !important;
+  }
+}
+
+/* PRIME Walls: clean standalone layer. Underlying candlestick chart no longer
+   bleeds through, while a dedicated live price scale stays visible. */
+body.gp-prime-walls-clean-v78:not(.gp-prime-flow-lite-active) #chart-area {
+  background: #05070d !important;
+}
+body.gp-prime-walls-clean-v78:not(.gp-prime-flow-lite-active) #chart-area > :not(#gp-prime-walls-overlay):not(#chart-loading):not(.gp-pro-draw-svg):not(.gp-pro-draw-toolbar):not(.gp-pro-draw-properties):not(.gp-pro-draw-text-editor):not(.gp-pro-draw-quickbar):not(.gp-draw-tv-rail) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body.gp-prime-walls-clean-v78:not(.gp-prime-flow-lite-active) #gp-prime-walls-overlay {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.gp-prime-walls-price-scale-v78 {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 62px !important;
+  z-index: 8 !important;
+  pointer-events: none !important;
+  background: linear-gradient(90deg, transparent, rgba(1,8,15,.86) 36%, rgba(1,8,15,.97)) !important;
+  border-left: 1px solid rgba(255,255,255,.07) !important;
+  font-family: "JetBrains Mono", monospace !important;
+}
+.gp-prime-walls-price-scale-v78__title {
+  position: absolute !important;
+  top: 8px !important;
+  right: 7px !important;
+  color: rgba(162,195,218,.55) !important;
+  font-size: 8px !important;
+  font-weight: 900 !important;
+  letter-spacing: .12em !important;
+}
+.gp-prime-walls-price-scale-v78__tick,
+.gp-prime-walls-price-scale-v78__live {
+  position: absolute !important;
+  right: 5px !important;
+  transform: translateY(-50%) !important;
+  color: rgba(206,224,238,.72) !important;
+  font-size: 9px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,.9) !important;
+}
+.gp-prime-walls-price-scale-v78__tick::before {
+  content: "" !important;
+  position: absolute !important;
+  right: 53px !important;
+  top: 50% !important;
+  width: 6px !important;
+  border-top: 1px solid rgba(255,255,255,.13) !important;
+}
+.gp-prime-walls-price-scale-v78__live {
+  right: 1px !important;
+  padding: 4px 5px !important;
+  border-radius: 5px 0 0 5px !important;
+  color: #03120d !important;
+  background: #24efad !important;
+  font-size: 9px !important;
+  font-weight: 950 !important;
+  box-shadow: 0 0 14px rgba(36,239,173,.24) !important;
+}
